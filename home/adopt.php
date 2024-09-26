@@ -5,7 +5,7 @@ session_start();
 $host = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
-$dbName = 'Paws'; // Your database name
+$dbName = 'pawster'; // Your database name
 
 $conn = new mysqli($host, $dbUsername, $dbPassword, $dbName);
 
