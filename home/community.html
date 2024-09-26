@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FancyPets Community</title>
+    <link rel="stylesheet" href="community.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="../images/pawslogo.png" alt="PAWster Logo" class="logo-image">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="nav-btn">Home</a></li>
+                <li><a href="adopt.html" class="nav-btn">Adopt</a></li>
+                <li><a href="community.html" class="nav-btn">Community</a></li>
+                <li><a href="about.html" class="nav-btn">About Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#" class="sign-up">Sign Up</a>
+            <a href="#" class="sign-in">Sign In</a>
+        </div>
+    </header>
+
+    <!-- Main Community Section -->
+    <section class="community-section">
+        <div class="post-container">
+            <h2>Share with the Community</h2>
+            <form id="post-form" class="post-form">
+                <textarea id="post-content" name="post-content" rows="4" placeholder="What's on your mind?"></textarea>
+                <button type="submit" class="post-btn">Post</button>
+            </form>
+        </div>
+
+        <!-- Posts Feed -->
+        <div class="posts-feed" id="posts-feed">
+            <h3>Recent Posts</h3>
+            <!-- Posts will be added here dynamically -->
+        </div>
+    </section>
+
+    <!-- JavaScript for adding posts -->
+    <script>
+        const postForm = document.getElementById('post-form');
+        const postContent = document.getElementById('post-content');
+        const postsFeed = document.getElementById('posts-feed');
+        let posts = [];
+
+        postForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const content = postContent.value;
+            if (content.trim() === '') return;
+
+            const newPost = await fetch('http://localhost:3000/posts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ content }),
+            }).then(res => res.json());
+
+            posts.push(newPost);
+            postContent.value = '';
+            displayPosts();
+        });
+
+        // Function to display posts (same as explained earlier)
+        function displayPosts() {
+            postsFeed.innerHTML = '<h3>Recent Posts</h3>';
+            posts.forEach(post => {
+                const postDiv = document.createElement('div');
+                postDiv.classList.add('post');
+                postDiv.innerHTML = `
+                    <div class="post-header">
+                        <img src="user1.png" alt="${post.user}" class="user-image">
+                        <span class="user-name">${post.user}</span>
+                    </div>
+                    <div class="post-content">
+                        <p>${post.content}</p>
+                    </div>
+                    <div class="post-footer">
+                        <span class="post-time">${new Date(post.id).toLocaleTimeString()}</span>
+                        <button class="like-btn">Like (${post.likes})</button>
+                    </div>
+                `;
+                postsFeed.appendChild(postDiv);
+            });
+        }
+    </script>
+
+</body>
+<!-- Include the external JS file at the bottom of the HTML -->
+<script src="community.js"></script>
+
+</html>
