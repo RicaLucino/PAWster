@@ -19,46 +19,50 @@ header {
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo img {
+  }
+  
+  .logo img {
     max-height: 150px; 
     width: auto; 
   }
-
-nav ul {
+  nav ul {
     display: flex;
     list-style: none;
-}
-
-nav ul li {
+  }
+  
+  nav ul li {
     margin: 0 15px;
-}
-
-nav ul li a {
+  }
+  
+  nav ul li a {
     text-decoration: none;
     font-weight: bold;
     color: #555;
-    font-size: 1em;
-}
-
-.auth-buttons {
+    font-size: 1.5em;
+  }
+  
+  .auth-buttons {
     display: flex;
-}
-
-.auth-buttons a {
+  }
+  
+  .auth-buttons a {
     margin-left: 10px;
     padding: 10px 15px;
     border-radius: 25px;
     text-decoration: none;
     font-weight: bold;
     color: #fff;
-}
-
-.auth-buttons .menu {
-    background-color: #8d7f61;
-}
-
+  }
+  
+  .auth-buttons .sign-up {
+    background-color: #d1b48c;
+    text-size-adjust: 40px;
+  }
+  
+  .auth-buttons .sign-in {
+    background-color: #987555;
+  }
+  
 /* Adoption Banner Section */
 .adoption-banner {
     padding: 50px 100px;

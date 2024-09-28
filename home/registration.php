@@ -13,17 +13,13 @@
             <h2> Find your dream pets! </h2>
             <p>Start for free and turn your ideas into reality</p>
         </div>
-
         <div class="register-form">
             <h2>Create an Account</h2>
-
             <!--<form action="register_action.php" method="post"> </from> -->
-
                 <div class="input-group">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" required>
                 </div>
-
                 <div class="input-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" id="email" required>
@@ -35,32 +31,24 @@
                 <button type="submit" class="register-btn">Register</button>
            
             <p>Already have an account? <a href="logIn.php">Login here</a></p>
-
         </div>
     </div>
 </body>
 </html>
-
 <!-- for register functionality-->
-
 <?php
 include '../components/connect.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = md5($_POST['password']); 
-
-
     // Check if email already exists
     $sql = "SELECT * FROM users WHERE email='$email'";
     $result = $conn->query($sql);
-
     if ($result->num_rows > 0) {
         echo "<script>alert('Email already exists!'); window.location='registration.php';</script>";
     } else {
         $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
-
         if ($conn->query($sql) === TRUE) {
             echo "<script>alert('Registration successful!'); window.location='index.html';</script>";
         } else {
