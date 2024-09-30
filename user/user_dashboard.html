@@ -1,32 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
+    <title>User Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="user_dashboard.css">
 </head>
 <body>
-    <div class="wrapper">
+    <div class="dashboard-container">
         <!-- Sidebar -->
-        <div class="sidebar">
-            <h2>User Dashboard</h2>
-            <ul>
-                <li><a href="dashboard.php">User Overview</a></li>
-                <li><a href="adoption_requests.php">Adoption Requests</a></li> <!-- New Button -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="" alt="Profile Picture" class="profile-pic">
+                <div class="user-info">
+                    <h3>Nico Robin</h3>
+                    <p>@Fleurs</p>
+                </div>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="user_dashboard.html"> Overview </a></li>
+                <li><a href="">Adoption Requests</a></li> <!-- New Button -->
                 <li><a href="">Paw Cart</a></li>
-                <li><a href="">Adopt List</a></li>
+                <li><a href="adopt.php">Adopt List</a></li>
                 <li><a href="">Community Posts</a></li>
-                <li><a href=">User Profile</a></li>
+                <li><a href="">User Profile</a></li>
                 <li><a href="logout.php">Logout</a></li>
             </ul>
-        </div>
+        </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
-            <h1>Welcome to the User Dashboard</h1>
-            <p>Select an option from the menu to manage the platform.</p>
-        </div>
+        <main class="main-content">
+            <header class="main-header">
+                <h1>Dashboard</h1>
+                <div class="profile-menu">
+                    <span class="notifications">🔔 3</span>
+                    <img src="" alt="Profile Picture" class="mini-profile-pic">
+                </div>
+            </header>
+
+            <!-- Dashboard Stats -->
+            <section class="dashboard-section">
+                <div class="activity-chart card">
+                    <h2>Activity</h2>
+                    <canvas id="activityChart"></canvas> <!-- Placeholder for chart -->
+                </div>
+                <div class="users card">
+                    <h2>My Adoption Request</h2>
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html>
+
